@@ -4,3 +4,4 @@ collecting data from sensor to files on SD card
 used JS for view graph in browser
 hardware: M5Stack FIRE + Temperature Humidity Pressure Sensor
 https://m5stack.com/collections/m5-core/products/fire-iot-development-kit
+SD format FAT32
