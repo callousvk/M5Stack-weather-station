@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<title>M5Stack</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+	<div style="width:85%">
+		<canvas id="myChart" width="" height=""></canvas>
+	</div>
+	<div align="center" style="width:85%">
+	<br>
+	<div style="float: center; display:inline-block">
+		<form action="previous" method="get">
+			<button type="submit">Previous</button>
+		</form>
+	</div>
+	<div style="float: center; display:inline-block">
+		<form action="next" method="get">
+			<button type="submit">Next</button>
+		</form>
+	</div>
+	<br>
+	<br>
+	<button id="viewTemperature">Temperature</button>
+	<button id="viewHumidity">Humidity</button>
+	<button id="viewPressure">Pressure</button>
+	<br>
+	<br>
+	<div style="float: center; display:inline-block">
+	<form action="hour" method="get">
+		<button type="submit">Hour</button>
+	</form>
+	</div>
+	<div style="float: center; display:inline-block">
+		<form action="day" method="get">
+			<button type="submit">Day</button>
+		</form>
+	</div>
+	<div style="float: center; display:inline-block">
+		<form action="month" method="get">
+			<button type="submit">Month</button>
+		</form>
+	</div>
+	</div>
+<script>
+var fullstring = "

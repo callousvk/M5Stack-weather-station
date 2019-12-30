@@ -1,0 +1,95 @@
+";
+var parts = fullstring.split('/');
+var dateS = [];
+var timeS = [];
+var tempS = [];
+var presS = [];
+var humS = [];
+var lab = [];
+
+for (var i = 0, len=parts.length; i<len; i++){
+    string = parts[i].split(';');
+    dateS.push(string[0]);
+    timeS.push(string[1]);
+    tempS.push(string[2]);
+    presS.push(string[3]);
+    humS.push(string[4]);
+}
+
+for (var i = 0, len=dateS.length; i<len; i++){
+	lab.push(dateS[i] + " " + timeS[i]);
+}
+
+var parts = dateS[0].split(".");
+
+var config = {
+    type: 'line',
+    data: {
+		labels: lab,
+		pointRadius: 5,
+        datasets: [{
+            label: parts[0] + "." + parts[1] + " Temperature",
+			data: tempS,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 2,
+			pointRadius: 5,
+			pointHoverRadius: 5,
+			pointHitRadius: 5,
+			fill: false
+        }]
+    },
+    options: {
+	    legend: {
+			display: true,
+			position: 'bottom',
+            labels: {
+                fontColor: 'rgba(0, 0, 0, 6)',
+				fontSize: 16
+            }
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+		tooltips:{
+			enabled: true
+			}
+    }
+};
+
+window.onload = function() {
+	var ctx = document.getElementById('myChart').getContext('2d');
+	window.myLine = new Chart(ctx, config);
+};
+
+document.getElementById('viewTemperature').addEventListener('click', function() {
+	config.data.datasets[0].data = tempS;
+	config.data.datasets[0].label = parts[0] + "." + parts[1] + " Temperature"
+	config.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.2)';
+	config.data.datasets[0].borderColor = 'rgba(255, 159, 64, 1)';
+	window.myLine.update();
+});
+
+document.getElementById('viewHumidity').addEventListener('click', function() {
+	config.data.datasets[0].data = humS;
+	config.data.datasets[0].label = parts[0] + "." + parts[1] + " Humidity";
+	config.data.datasets[0].backgroundColor = 'rgba(55, 99, 132, 0.2)';
+	config.data.datasets[0].borderColor = 'rgba(55, 159, 64, 1)';
+	window.myLine.update();
+});
+
+document.getElementById('viewPressure').addEventListener('click', function() {
+	config.data.datasets[0].data = presS;
+	config.data.datasets[0].label = parts[0] + "." + parts[1] + " Pressure";
+	config.data.datasets[0].backgroundColor = 'rgba(55, 0, 132, 0.2)';
+	config.data.datasets[0].borderColor = 'rgba(55, 0, 64, 1)';
+	window.myLine.update();
+});
+
+</script>
+</body>
+</html>
