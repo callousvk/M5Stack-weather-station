@@ -1,4 +1,3 @@
-# M5Stack-weather-station
 M5Stack weather station with WIFI Access Point Webserver on micropython
 collecting data from sensor to files on SD card
 used JS for view graph in browser
